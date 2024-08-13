@@ -1,0 +1,56 @@
+                                                                 Case Study 1
+																 
+Please find the answers below :
+
+1) Create a user 'Tom':
+
+sudo useradd Tom -m -c "Tom's User" # creating user Tom and home directory with comment 
+sudo passwd Tom # set password
+
+(2) Allow Tom to modify his shell and password:
+
+sudo chsh -s /bin/bash Tom  # Change shell
+sudo passwd Tom  # Change password				
+
+(3) Create two groups (e.g., 'project' and 'friends'):
+
+sudo groupadd project
+sudo groupadd friends												 
+
+(4) Add yourself (Jane) and Tom to the 'project' group:
+
+sudo usermod -a -G project Jane
+sudo usermod -a -G project Tom
+
+(5) Create 'Linux' repository outside your home directory:
+
+sudo mkdir /Linux
+
+(6) Change the ownership and group of the 'Linux' repository:
+
+sudo chown -R :project /Linux
+
+
+(7) Set permissions to ensure Tom cannot access your home folder but can access the 'Linux' repository:
+
+sudo chmod 750 /home/Jane
+sudo chmod 750 /Linux
+
+
+(8) Create 'notes' and 'research' folders:
+
+sudo mkdir /Linux/notes
+sudo mkdir /Linux/research
+
+(9) Set permissions for the 'notes' folder to allow Tom and friends read-only access:
+
+sudo chown :friends /Linux/notes
+sudo chmod 740 /Linux/notes
+
+(10) Set permissions for the 'research' folder to allow only you (Jane) to read and write:
+
+sudo chown Jane:project /Linux/research
+sudo chmod 750 /Linux/research
+
+
+
